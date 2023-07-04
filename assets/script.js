@@ -13,7 +13,7 @@ var questions = [{
     b: "2. 5 Dragon Balls",
     c: "3. 24 Dragon Balls",
     d: "4. 7 Dragon Balls",
-    correct: "4. 7 Dragon Balls"
+    correct: "4. 7 Dragon Balls",
 },
 {
     q: " In the anime 'Hunter X Hunter, which family is famous for being assassins ? ",
@@ -21,7 +21,7 @@ var questions = [{
     b: "2. Zoldyck",
     c: "3. Khan",
     d: "4. Sans",
-    correct: "2. Zoldyck"
+    correct: "2. Zoldyck",
 
 },
 {
@@ -30,7 +30,7 @@ var questions = [{
     b: "2. Gon",
     c: "3. Kaneki",
     d: "4. Ash",
-    correct, "3. Kaneki"
+    correct: "3. Kaneki",
 
 },
 {
@@ -39,7 +39,7 @@ var questions = [{
     b: "2. Saitama ",
     c: "3. Sasuke ",
     d: "4. Itachi ",
-    correct, "2. Saitama "
+    correct: "2. Saitama ",
 
 },
 {
@@ -48,5 +48,12 @@ var questions = [{
     b: "2. One Piece",
     c: "3. Hell's Paradise",
     d: "4. Spy Family",
-    correct, "1. Naruto"
-}]
+    correct: "1. Naruto",
+}];
+//Created var for start and duration for the quiz
+var clickStart = document.getElementById('start');
+var timerEl = document.getElementById('countdown');
+var timeLeft = 30;
+var quizDuration;
+var questionContainer = document.querySelector('#quiz-container');
+
