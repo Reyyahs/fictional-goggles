@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./assets/style.css">
-    <title>Anime Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>Anime Quiz</title>
 </head>
+
 <body>
-    <div>
-        <button class="view-score" id="view-score">View high score</button>
-    </div>
-    <div id="intro-page">
+  <div>
+    <button class="view-score" id="view-score">View high score</button>
+  </div>
+  <div id="intro-page">
     <h1>Random Anime Quiz</h1>
     <p>Try to answer the following Anime-related questions within the time limit.
-        Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+      Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
     <button id="start">Start Quiz</button>
-    </div>
-    <script src="./assets/js/script.js"></script>
+  </div>
+  <h2 id="countdown"></h2>
+  <div class="quiz-container" id="quiz-container"></div>
+  <div id="answer-determination"></div>
+  <script src="./assets/script.js"></script>
 </body>
+
 </html>

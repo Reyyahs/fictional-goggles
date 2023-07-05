@@ -53,7 +53,55 @@ var questions = [{
 //Created var for start and duration for the quiz
 var clickStart = document.getElementById('start');
 var timerEl = document.getElementById('countdown');
-var timeLeft = 30;
+var timeLeft = 60;
 var quizDuration;
 var questionContainer = document.querySelector('#quiz-container');
+//added timer functionality
+function timer() {
+    timerEl.textContent ='Time remaining: ' + timeLeft + 's';
+    quizDuration = setInterval(function () {
+        if (timeLeft > 0) {
+            adjustTime(-1);
+        } else {
+            endQuizPage();
+        }
+    }, 1000);
+}
 
+function adjustTime(amount) {
+    timeLeft += amount;
+    if (timeLeft < 0) {
+        timeLeft = 0;
+    }
+    timerEl.textContent = 'Time reamaining: ' + timeLeft + 's';
+}
+//added functionality to timer when 'start quiz' is clicked on 
+clickStart.onclick = timer;
+var renderQuestion = function (question) {
+    questionContainer.innerHTML = '';
+
+    var questionHeader = document.createElement('h2');
+    questionHeader.textContent = question.q;
+
+    var answerA = document.createElement('button');
+    answerA.textContent = question.a;
+    answerA.addEventListener('click', answerClick);
+
+    var answerB = document.createElement('button');
+    answerB.textContent = question.b;
+    answerB.addEventListener('click', answerClick);
+
+    var answerC = document.createElement('button');
+    answerC.textContent = question.c;
+    answerC.addEventListener('click', answerClick);
+
+    var answerD = document.createElement('button');
+    answerD.textContent = question.d;
+    answerD.addEventListener('click', answerClick);
+
+    questionContainer.appendChild(questionHeader);
+    questionContainer.appendChild(answerA);
+    questionContainer.appendChild(answerB);
+    questionContainer.appendChild(answerC);
+    questionContainer.appendChild(answerD);
+}
