@@ -104,4 +104,33 @@ var renderQuestion = function (question) {
     questionContainer.appendChild(answerB);
     questionContainer.appendChild(answerC);
     questionContainer.appendChild(answerD);
-}
+};
+//handle user answers, updates the scores and question
+var currentQuestionIndex = 0;
+var userScore = 0;
+var correctAnswer = questions[currentQuestionIndex].correct;
+var clickViewScores = document.getElementById("view-score");
+
+var answerClick = function(event) {
+    event.preventDefault();
+    var userAnswer = event.target.textContent;
+    correctAnswer = questions[currentQuestionIndex].correct;
+    var answerDetermination = document.querySelector("#answer-determination");
+    if (userAnswer !== correctAnswer) {
+        adjustTime(-10);
+        answerDetermination.textContent = "Wrong!";
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= questions.length) {
+            endQuizPage();
+        } else {renderQuestion(questions[currentQuestionIndex])};
+
+    }
+    else if (userAnswer === correctAnswer) {
+        currentQuestionIndex++;
+        answerDetermination.textContent = "Correct!";
+        userScore++;
+        if (currentQuestionIndex >= questions.length) {
+            endQuizPage();
+        } else {renderQuestion(questions[currentQuestionIndex])};
+    }
+};
