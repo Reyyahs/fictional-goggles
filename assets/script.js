@@ -134,3 +134,10 @@ var answerClick = function(event) {
         } else {renderQuestion(questions[currentQuestionIndex])};
     }
 };
+// added function to start and reset quiz display
+var quiz = function (event) {
+    event.preventDefault();
+    resetDisplay();
+    renderQuestion(questions[currentQuestionIndex]);
+};
+
