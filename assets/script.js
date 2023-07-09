@@ -141,3 +141,73 @@ var quiz = function (event) {
     renderQuestion(questions[currentQuestionIndex]);
 };
 
+function resetDisplay() {
+    questionContainer.innerHTML="";
+    document.querySelector("#intro-page").style.display = "none";
+}
+//
+function highScores() {
+    let data = localStorage.getItem("object");
+    let getData = JSON.parse(data);
+    let name = getData.name;
+    let score = getData.score;
+    questionContainer.innerHTML = "";
+    questionContainer.innerHTML = name + " " + score;
+}
+//added an eventlistener for highscore
+clickViewScores.addEventListener("click", () => {
+    highScores();
+})
+
+var initials; 
+function endQuizPage() {
+    resetDisplay();
+    timerEl.textContent = "";
+    clearInterval(quizDuration);
+    var endPage = document.createElement("h2");
+    questionContainer.appendChild(endPage);
+
+    let blank = document.querySelector("#answer-determination");
+    blank.innerHTML = "";
+
+    endPage.innerHTML = "All done! Your final score is " + userScore + ". Enter your initials to save";
+
+    var initialBox = document.createElement("input");
+    blank.appendChild(initialBox);
+
+    var submitInitialBtn = document.createElement("button");
+    submitInitialBtn.textContent = "Submit";
+    blank.appendChild(submitInitialBtn);
+
+    submitInitialBtn.addEventListener("click", () => {
+        // rest variable
+        
+        if (initialBox.value.length === 0) return false;
+
+        let storeInitials = (...input) => {
+            let data = JSON.stringify({ "name":input[0], "score":input[1]})
+            localStorage.setItem("object", data)
+        }
+        storeInitials(initialBox.value, userScore);
+
+        var playAgain = document.createElement("button");
+        playAgain.textContent= "Play Again!";
+        blank.appendChild(playAgain);
+
+        playAgain.addEventListener("click", () => {
+            location.reload();
+        })
+    });
+
+    document.querySelector("input").value = "";
+
+    initialBox.addEventListener("submit", endQuizPage);
+    
+};
+function renderInitials() {
+    submitInitialBtn.addEventListener('click', function(event) {
+        event.preventDefault;
+}
+)};
+
+clickStart.addEventListener('click', quiz);
