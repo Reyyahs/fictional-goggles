@@ -8,6 +8,12 @@ body {
     background-attachment: fixed;
   }
 
+.text {
+  font-family: sans-serif;
+  color:black;
+  font-size: larger;
+  font-weight: bold;  
+}
 
 button {
     padding: 5px;
